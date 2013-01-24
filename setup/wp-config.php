@@ -37,8 +37,13 @@ define('DB_HOST', trim($url["host"]));
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
-// define('FORCE_SSL_LOGIN', true);
-// define('FORCE_SSL_ADMIN', true);
+/** Allows both foobar.com and foobar.herokuapp.com to load media assets correctly. */
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+
+define('FORCE_SSL_LOGIN', true);
+define('FORCE_SSL_ADMIN', true);
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+  $_SERVER['HTTPS'] = 'on';
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');

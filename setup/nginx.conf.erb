@@ -35,22 +35,21 @@ http {
     }
 
     # Deny /favicon.ico
-    # location = /favicon.ico {
-    #   access_log      off;
-    #   log_not_found   off;
-    # }
+    location = /favicon.ico {
+      access_log      off;
+      log_not_found   off;
+    }
 
     # Deny /robots.txt
-    # location = /robots.txt {
-    #   allow           all;
-    #   log_not_found   off;
-    #   access_log      off;
-    # }
+    location = /robots.txt {
+      allow           all;
+      log_not_found   off;
+      access_log      off;
+    }
 
     # Status. /status.html uses /status
     location ~ ^/(status|ping)$ {
       include         /app/vendor/nginx/conf/fastcgi_params;
-      fastcgi_param   HTTPS on; # force SSL
       fastcgi_pass    unix:/tmp/php-fpm.socket;
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
@@ -67,7 +66,7 @@ http {
       rewrite         ^(.+)$ /index.php?q=$1 last;
 
       # Add trailing slash to */wp-admin requests.
-      rewrite         /wp-admin$ $scheme://$host$uri/ permanent;
+      # rewrite         /wp-admin$ $scheme://$host$uri/ permanent;
 
       # redirect to feedburner.
       # if ($http_user_agent !~ FeedBurner) {
@@ -77,7 +76,6 @@ http {
 
     location ~ .*\.php$ {
       include         /app/vendor/nginx/conf/fastcgi_params;
-      fastcgi_param   HTTPS on; # force SSL
       fastcgi_pass    unix:/tmp/php-fpm.socket;
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
