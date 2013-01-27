@@ -32,10 +32,27 @@ http {
     gzip_types          text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript image/png image/gif image/jpeg;
 
     # Some basic cache-control for static files to be sent to the browser
-    location ~* \.(?:ico|css|js|gif|jpeg|jpg|png)$ {
+    location ~ \.(html|htm|rtf|rtx|svg|svgz|txt|xsd|xsl|xml)$ {
+      try_files       $uri =404;
+      expires 86000s;
+      add_header Pragma "public";
+      add_header Cache-Control "max-age=86000, public, must-revalidate, proxy-revalidate";
+    }
+
+    location ~ \.(css|js|htc)$ {
+      try_files       $uri =404;
       expires         max;
-      add_header      Pragma public;
-      add_header      Cache-Control "public, must-revalidate, proxy-revalidate";
+      add_header      Pragma "public";
+      add_header      Cache-Control "max-age=31536000, public, must-revalidate, proxy-revalidate";
+      access_log      off;
+    }
+
+    location ~ \.(asf|asx|wax|wmv|wmx|avi|bmp|class|divx|doc|docx|eot|exe|gif|gz|gzip|ico|jpg|jpeg|jpe|mdb|mid|midi|mov|qt|mp3|m4a|mp4|m4v|mpeg|mpg|mpe|mpp|otf|odb|odc|odf|odg|odp|ods|odt|ogg|pdf|png|pot|pps|ppt|pptx|ra|ram|svg|svgz|swf|tar|tif|tiff|ttf|ttc|wav|wma|wri|xla|xls|xlsx|xlt|xlw|zip)$ {
+      try_files       $uri =404;
+      expires         max;
+      add_header      Pragma "public";
+      add_header      Cache-Control "max-age=31536000, public, must-revalidate, proxy-revalidate";
+      access_log      off;
     }
 
     # Deny hidden files (.htaccess, .htpasswd, .DS_Store).
@@ -63,6 +80,28 @@ http {
       include         /app/vendor/nginx/conf/fastcgi_params;
       fastcgi_pass    unix:/tmp/php-fpm.socket;
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    # Set a variable to work around the lack of nested conditionals
+    set $cache_uri $request_uri;
+
+    # POST requests and urls with a query string should always go to PHP
+    if ($request_method = POST) {
+        set $cache_uri 'no cache';
+    }
+
+    if ($query_string != "") {
+        set $cache_uri 'no cache';
+    }
+
+    # Don't cache uris containing the following segments
+    # if ($request_uri ~* "(\/wp-admin\/|\/xmlrpc.php|\/wp-(app|cron|login|register|mail)\.php|wp-.*\.php|index\.php|wp\-comments\-popup\.php|wp\-links\-opml\.php|wp\-locations\.php)") {
+    #     set $cache_uri "no cache";
+    # }
+
+    # Don't use the cache for logged in users or recent commenters
+    if ($http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp\-postpass|wordpress_logged_in") {
+        set $cache_uri 'no cache';
     }
 
     location / {
