@@ -11,7 +11,6 @@ http {
   default_type        application/octet-stream;
   sendfile            on;
   keepalive_timeout   65;
-  gzip  on;
 
   server {
     listen            <%= ENV['PORT'] %>;
@@ -19,6 +18,17 @@ http {
 
     root              /app/public;
     index             index.php;
+
+    # Use gzip compression
+    gzip_static         on;
+    gzip                on;
+    gzip_disable        "msie6";
+    gzip_vary           on;
+    gzip_proxied        any;
+    gzip_comp_level     5;
+    gzip_buffers        16 8k;
+    gzip_http_version   1.0;
+    gzip_types          text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript image/png image/gif image/jpeg;
 
     # Some basic cache-control for static files to be sent to the browser
     location ~* \.(?:ico|css|js|gif|jpeg|jpg|png)$ {
