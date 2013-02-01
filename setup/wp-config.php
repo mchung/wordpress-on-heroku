@@ -100,7 +100,10 @@ define('WP_DEBUG', false);
  */
 define('WP_CACHE', true);
 
-
+/**
+ * Disable the built-in cron job
+ */
+define('DISABLE_WP_CRON', true);
 
 /* That's all, stop editing! Happy blogging. */
 
