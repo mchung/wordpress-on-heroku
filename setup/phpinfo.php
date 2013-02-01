@@ -1,6 +1,4 @@
 <?php
-  defaults("USE_AUTHENTICATION", 0);
-
   if (getenv("ENABLE_SYSTEM_ACCESS") != "true") {
     header("HTTP/1.0 403 Forbidden");
     exit();
@@ -13,7 +11,7 @@
 
   if ($_SERVER["PHP_AUTH_USER"] == getenv("SYSTEM_USERNAME") &&
       $_SERVER["PHP_AUTH_PW"] == getenv("SYSTEM_PASSWORD")) {
-    # Show page
+    phpinfo();
   } else {
     header("WWW-Authenticate: Basic realm='System access'");
     header("HTTP/1.0 401 Unauthorized");
