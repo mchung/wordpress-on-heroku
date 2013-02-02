@@ -92,12 +92,21 @@ http {
       access_log      off;
     }
 
-    # Status. /status.html uses /status
+    # PHP status. /status.html uses /status
     location ~ ^/(status|ping)$ {
       include         /app/vendor/nginx/conf/fastcgi_params;
       fastcgi_pass    unix:/tmp/php-fpm.socket;
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
+
+    # Nginx status. http://wiki.nginx.org/HttpStubStatusModule
+    # location /nginx_status {
+    #   # copied from http://blog.kovyrin.net/2006/04/29/monitoring-nginx-with-rrdtool/
+    #   stub_status     on;
+    #   access_log      off;
+    #   allow           SOME.IP.ADD.RESS;
+    #   deny            all;
+    # }
 
     # Set a variable to work around the lack of nested conditionals
     set $cache_uri $request_uri;
