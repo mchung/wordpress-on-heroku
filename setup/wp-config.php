@@ -15,38 +15,38 @@
  */
 
 
-$url = parse_url($_SERVER["CLEARDB_DATABASE_URL"]);
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', trim($url["path"], "/"));
-// define('DB_NAME', 'heroku_4eed1f5663e035f');
+define("DB_NAME", trim($url["path"], "/"));
+// define("DB_NAME", "heroku_4eed1f5663e035f");
 
 /** MySQL database username */
-define('DB_USER', trim($url["user"]));
-// define('DB_USER', 'b7cfc877a785ae');
+define("DB_USER", trim($url["user"]));
+// define("DB_USER", "b7cfc877a785ae");
 
 /** MySQL database password */
-define('DB_PASSWORD', trim($url["pass"]));
-// define('DB_PASSWORD', 'db3717c2');
+define("DB_PASSWORD", trim($url["pass"]));
+// define("DB_PASSWORD", "db3717c2");
 
 /** MySQL hostname */
-define('DB_HOST', trim($url["host"]));
-// define('DB_HOST', 'us-cdbr-east-03.cleardb.com');
+define("DB_HOST", trim($url["host"]));
+// define("DB_HOST", "us-cdbr-east-03.cleardb.com");
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+define("DB_CHARSET", "utf8");
 
 /** Allows both foobar.com and foobar.herokuapp.com to load media assets correctly. */
-define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+define("WP_SITEURL", "http://" . $_SERVER["HTTP_HOST"]);
 
-define('FORCE_SSL_LOGIN', true);
-define('FORCE_SSL_ADMIN', true);
-if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
-  $_SERVER['HTTPS'] = 'on';
+define("FORCE_SSL_LOGIN", getenv("FORCE_SSL_LOGIN") == "true");
+define("FORCE_SSL_ADMIN", getenv("FORCE_SSL_ADMIN") == "true");
+if ($_SERVER["HTTP_X_FORWARDED_PROTO"] == "https")
+  $_SERVER["HTTPS"] = "on";
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+define("DB_COLLATE", "");
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -57,14 +57,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+define("AUTH_KEY",         "put your unique phrase here");
+define("SECURE_AUTH_KEY",  "put your unique phrase here");
+define("LOGGED_IN_KEY",    "put your unique phrase here");
+define("NONCE_KEY",        "put your unique phrase here");
+define("AUTH_SALT",        "put your unique phrase here");
+define("SECURE_AUTH_SALT", "put your unique phrase here");
+define("LOGGED_IN_SALT",   "put your unique phrase here");
+define("NONCE_SALT",       "put your unique phrase here");
 
 /**#@-*/
 
@@ -74,17 +74,17 @@ define('NONCE_SALT',       'put your unique phrase here');
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_';
+$table_prefix  = "wp_";
 
 /**
  * WordPress Localized Language, defaults to English.
  *
  * Change this to localize WordPress. A corresponding MO file for the chosen
  * language must be installed to wp-content/languages. For example, install
- * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
+ * de_DE.mo to wp-content/languages and set WPLANG to "de_DE" to enable German
  * language support.
  */
-define('WPLANG', '');
+define("WPLANG", "");
 
 /**
  * For developers: WordPress debugging mode.
@@ -93,23 +93,23 @@ define('WPLANG', '');
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
+define("WP_DEBUG", false);
 
 /**
  * Enable the WordPress Object Cache
  */
-define('WP_CACHE', true);
+define("WP_CACHE", getenv("WP_CACHE") == "true");
 
 /**
  * Disable the built-in cron job
  */
-define('DISABLE_WP_CRON', true);
+define("DISABLE_WP_CRON", getenv("DISABLE_WP_CRON") == "true");
 
-/* That's all, stop editing! Happy blogging. */
+/* That"s all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
-if ( !defined('ABSPATH') )
-  define('ABSPATH', dirname(__FILE__) . '/');
+if ( !defined("ABSPATH") )
+  define("ABSPATH", dirname(__FILE__) . "/");
 
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
+require_once(ABSPATH . "wp-settings.php");
