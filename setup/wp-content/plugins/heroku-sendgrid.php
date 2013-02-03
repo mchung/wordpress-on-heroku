@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Heroku Sendgrid
+Plugin Name: Sendgrid for Wordpress on Heroku
 Plugin URI: http://github.com/mchung/heroku-buildpack-wordpress
-Description: Configures Wordpress instances running on Heroku to use Sendgrid
+Description: Sendgrid Wordpress plugin for Wordpress sites running on Heroku.
 Version: 1.0
 Author: Marc Chung
 Author URI: http://www.marcchung.com
