@@ -13,7 +13,9 @@
  *
  * @package WordPress
  */
-
+ 
+define('WP_HOME', "http://{$_SERVER["HTTP_HOST"]}");
+define('WP_SITEURL', "http://{$_SERVER["HTTP_HOST"]}");
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -33,6 +35,9 @@ define("DB_PASSWORD", trim($url["pass"]));
 /** MySQL hostname */
 define("DB_HOST", trim($url["host"]));
 // define("DB_HOST", "us-cdbr-east-03.cleardb.com");
+
+/** MySQL hostname */
+define("DB_PORT", trim($url["port"]));
 
 /** Database Charset to use in creating database tables. */
 define("DB_CHARSET", "utf8");
