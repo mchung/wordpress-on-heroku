@@ -12,13 +12,20 @@ add_action('phpmailer_init', 'heroku_mail_to_sendgrid');
 
 function heroku_mail_to_sendgrid(&$phpmailer) {
   $phpmailer->IsSMTP();
-  $phpmailer->Sender = $_SERVER["EMAIL_REPLY_TO"]; # 'return-path@domain.com';
-  $phpmailer->From = $_SERVER["EMAIL_FROM"]; # 'mail-from@domain.com';
-  $phpmailer->FromName = $_SERVER["EMAIL_NAME"]; # 'From Name';
+
+  $display_name = get_userdata(1)->display_name;
+  $blogname = get_bloginfo('blogname', 'raw');
+  $email = get_bloginfo('admin_email', 'raw');
+
+  $phpmailer->Sender = $email;
+  $phpmailer->From = $email;
+  $phpmailer->FromName = "$display_name from $blogname";
+  $phpmailer->AddReplyTo($email, $admin_name);
+
   $phpmailer->Host = 'smtp.sendgrid.net';
-  $phpmailer->Username = $_SERVER["SENDGRID_USERNAME"];
-  $phpmailer->Password = $_SERVER["SENDGRID_PASSWORD"];
-  $phpmailer->Hostname = $_SERVER["SERVER_NAME"];
+  $phpmailer->Username = getenv("SENDGRID_USERNAME");
+  $phpmailer->Password = getenv("SENDGRID_PASSWORD");
+  $phpmailer->Hostname = getenv("SERVER_NAME");
   $phpmailer->Port = 587;
   $phpmailer->SMTPAuth = true;
   $phpmailer->SMTPSecure = 'tls';
