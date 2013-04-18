@@ -17,10 +17,34 @@ function heroku_mail_to_sendgrid(&$phpmailer) {
   $blogname = get_bloginfo('blogname', 'raw');
   $email = get_bloginfo('admin_email', 'raw');
 
+  /** 
+   * Allow ENV vars to override the defaults, as it exposes
+   * the WP admin account. 
+   *
+   * Use heroku config:set to define these:
+   *   - EMAIL_FROM
+   *   - EMAIL_NAME
+   *   - EMAIL_REPLY_TO
+   **/
+  $email_from = getenv('EMAIL_FROM');
+  if(empty($email_from)){
+    $email_from = $email;
+  }
+
+  $email_from_name = getenv('EMAIL_NAME');
+  if(empty($email_from_name)){
+    $email_from_name = "$display_name from $blogname";
+  }
+
+  $email_reply_to = getenv('EMAIL_REPLY_TO');
+  if(empty($email_reply_to)){
+    $email_reply_to = $email;
+  }
+  
   $phpmailer->Sender = $email;
-  $phpmailer->From = $email;
-  $phpmailer->FromName = "$display_name from $blogname";
-  $phpmailer->AddReplyTo($email, $admin_name);
+  $phpmailer->From = $email_from;
+  $phpmailer->FromName = $email_from_name;
+  $phpmailer->AddReplyTo($email_reply_to);
 
   $phpmailer->Host = 'smtp.sendgrid.net';
   $phpmailer->Username = getenv("SENDGRID_USERNAME");
