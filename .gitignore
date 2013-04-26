@@ -1,0 +1,36 @@
+# common ignores
+*.swp
+*.swo
+.DS_Store
+
+# We want .mo files to be uploaded regardles of local gitignores for .mo files
+!*.mo
+
+# Follow Wordpress files that we DO NOT WANT to upload to Heroku
+# as they will be automatically installed when the instance is deployed
+# using the buildpack
+# If you wish to override these files, and thus include them in version
+# control, you should comment out the line or add a specific exception
+# for that file not to be ignored
+config/public/\.htaccess
+config/public/index\.php
+config/public/*\.txt
+config/public/*\.html
+config/public/wp-activate\.php
+config/public/wp-blog-header\.php
+config/public/wp-comments-post\.php
+config/public/wp-config-sample\.php
+config/public/wp-cron\.php
+config/public/wp-links-opml\.php
+config/public/wp-load\.php
+config/public/wp-login\.php
+config/public/wp-mail\.php
+config/public/wp-settings\.php
+config/public/wp-signup\.php
+config/public/wp-trackback\.php
+config/public/xmlrpc\.php
+config/public/wp-admin/
+config/public/wp-includes/
+config/public/wp-content/plugins/akismet/
+config/public/wp-content/themes/twentyeleven/
+config/public/wp-content/themes/twentytwelve/
