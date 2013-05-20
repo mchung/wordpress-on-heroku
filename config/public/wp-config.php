@@ -34,11 +34,17 @@ define("DB_PASSWORD", trim($url["pass"]));
 define("DB_HOST", trim($url["host"]));
 // define("DB_HOST", "us-cdbr-east-03.cleardb.com");
 
+/** MySQL database port  */
+// define("DB_PORT", trim($url["port"]));
+
 /** Database Charset to use in creating database tables. */
 define("DB_CHARSET", "utf8");
 
 /** Allows both foobar.com and foobar.herokuapp.com to load media assets correctly. */
 define("WP_SITEURL", "http://" . $_SERVER["HTTP_HOST"]);
+
+/** WP_HOME is your Blog Address (URL). */
+// define('WP_HOME', "http://" . $_SERVER["HTTP_HOST"]);
 
 define("FORCE_SSL_LOGIN", getenv("FORCE_SSL_LOGIN") == "true");
 define("FORCE_SSL_ADMIN", getenv("FORCE_SSL_ADMIN") == "true");
