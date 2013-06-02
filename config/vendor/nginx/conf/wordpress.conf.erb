@@ -5,9 +5,9 @@ server {
   # Some basic cache-control for static files to be sent to the browser
   location ~ \.(html|htm|rtf|rtx|svg|svgz|txt|xsd|xsl|xml)$ {
     try_files       $uri =404;
-    expires 86000s;
-    add_header Pragma "public";
-    add_header Cache-Control "max-age=86000, public, must-revalidate, proxy-revalidate";
+    expires         86000s;
+    add_header      Pragma "public";
+    add_header      Cache-Control "max-age=86000, public, must-revalidate, proxy-revalidate";
   }
 
   location ~ \.(css|js|htc)$ {
