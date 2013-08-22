@@ -1,0 +1,267 @@
+#icon-wpcf7 {
+	background: transparent url(../images/screen-icon.png) no-repeat 2px 1px;
+}
+
+div.wrap div.cf7com-links {
+	text-align: right;
+	font-size: .9em;
+	margin: -2em 1em 1em 0;
+}
+
+div.wrap div.cf7com-links a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+div.wrap div.donation {
+	border-width: 1px;
+	border-style: solid;
+	padding: 0 0.6em;
+	margin: 5px 0 15px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #ffffe0;
+	border-color: #e6db55;
+}
+
+div.wrap div.donation p {
+	margin: .7em 0;
+	line-height: 1;
+	padding: 2px;
+	font-size: 107%;
+}
+
+div.wrap div.donation p a {
+	color: #3f3f3f;
+	text-decoration: none;
+}
+
+div.wrap div.donation p a.button {
+	margin-left: 1em;
+	font-weight: bold;
+}
+
+#titlediv {
+	margin-bottom: 20px;
+	position: relative;
+	border: 1px solid #c7c7c7;
+	padding: 6px;
+}
+
+div.save-contact-form {
+	padding: 1.4em 0 0 0;
+	text-align: right;
+}
+
+div.actions-link {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 6px;
+}
+
+div.actions-link input {
+	padding: 0;
+	margin: 0;
+	border: none;
+	font-size: 11px;
+	cursor: pointer;
+	background: inherit;
+}
+
+div.actions-link input.copy {
+	color: #006505;
+}
+
+div.actions-link input.delete {
+	color: #bc0b0b;
+}
+
+input#wpcf7-title {
+	color: #555;
+	border: none;
+	font: bold 20px serif;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+input#wpcf7-title.focus {
+	color: #333;
+	border: 1px solid #777;
+	font: normal 13px Verdana, Arial, Helvetica, sans-serif;
+	cursor: text;
+	background-color: transparent;
+}
+
+input#wpcf7-title.mouseover {
+	background-color: #ffffdd;
+}
+
+p.tagcode {
+	color: #333;
+	margin: 2ex 0 1ex 0;
+}
+
+input#contact-form-anchor-text, input#contact-form-anchor-text-old {
+	color: #fff;
+	background: #7e4e0b;
+	border: none;
+	width: 100%;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.postbox .half, .postbox .half-left, .postbox .half-right {
+	float: left;
+	width: 50%;
+}
+
+.postbox .half-right > * {
+	margin-left: 10px;
+}
+
+.postbox .mail-field, .postbox .message-field {
+	margin-top: 6px;
+	margin-bottom: 8px;
+}
+
+.postbox .mail-field label, .postbox .message-field label {
+	line-height: 1.4em;
+}
+
+div.pseudo-hr {
+	border-bottom: 1px solid transparent;
+	margin: 8px 0;
+}
+
+input, textarea {
+	border: 1px solid #dfdfdf;
+}
+
+input.wide {
+	width: 100%;
+}
+
+textarea {
+	width: 100%;
+}
+
+label.disabled {
+	color: #777;
+}
+
+#messagesdiv div.inside {
+	height: 28em;
+	overflow: auto;
+}
+
+div.tag-generator {
+	position: relative;
+	background: transparent;
+	padding: 0 0 5px 1px;
+}
+
+div.tg-pane {
+    border: 1px dashed #999;
+    background: #f1f1f1;
+    margin: 1ex 0 0 0;
+    padding: 10px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	line-height: 140%;
+}
+
+div.tg-pane table {
+	width: 100%;
+	margin: 0 0 0.7em 0;
+}
+
+div.tg-pane table caption {
+	text-align: left;
+	padding: 0 0 0.2em 0;
+	font-weight: bolder;
+	color: #777;
+}
+
+div.tg-pane table code {
+	background-color: inherit;
+}
+
+div.tg-pane table td {
+	vertical-align: top;
+	width: 50%;
+	border: none;
+	padding: 2px 0;
+}
+
+div.tg-pane input.tag, div.tg-pane input.mail-tag {
+	width: 100%;
+	border: none;
+	color: #fff;
+	background-color: #7e4e0b;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+div.tg-pane input.mail-tag {
+	width: 50%;
+	background-color: #404f03;
+}
+
+div.tg-mail-tag {
+	margin-top: 2.4em;
+	text-align: right;
+}
+
+div.tg-pane span.arrow {
+	font-family: monospace;
+	font-size: 1.2em;
+	color: #333;
+}
+
+div.tg-pane input.tg-name {
+	border-color: #555;
+}
+
+div.tg-pane input.oneline {
+	width: 94%;
+	font-size: smaller;
+	-moz-box-sizing: border-box;
+}
+
+div.tg-pane textarea {
+	width: 94%;
+	height: 100px;
+	font-size: smaller;
+}
+
+div.tg-pane div.tg-tag {
+	margin: .4em 0;
+}
+
+div.tg-dropdown {
+    position: absolute;
+    top: 26px;
+	left: 0;
+    z-index: 10;
+    border: 1px solid #ddd;
+}
+
+span.tg-closebutton {
+    color: #777;
+    font: bold 18px monospace;
+    padding: 1px 4px;
+    cursor: pointer;
+}
+
+div.tg-panetitle {
+    font: bold 132% sans-serif;
+    margin: 0 0 10px;
+    color: #777;
+}
+
+input.shortcode-in-list-table {
+	width: 100%;
+	border: none;
+}
