@@ -62,6 +62,13 @@ server {
   #   deny            all;
   # }
 
+  # Rewrite herokuapp.com url to stop duplicate content
+  # Uncomment and edit as required
+  # if ($host ~* "^yourblog.herokuapp.com$") {
+  #   rewrite ^(.*)$ http://blog.yourdomain.com$1 permanent;
+  #   break;
+  # }
+  
   # Set a variable to work around the lack of nested conditionals
   set $cache_uri $request_uri;
 
