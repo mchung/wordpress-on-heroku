@@ -65,7 +65,7 @@ if ( $post ) :
 		<?php if ( current_user_can( 'wpcf7_edit_contact_form', $post_id ) && ! $post->initial ) : ?>
 		<div class="actions-link">
 			<?php $copy_nonce = wp_create_nonce( 'wpcf7-copy-contact-form_' . $post_id ); ?>
-			<input type="submit" name="wpcf7-copy" class="copy" value="<?php echo esc_attr( __( 'Copy', 'wpcf7' ) ); ?>"
+			<input type="submit" name="wpcf7-copy" class="copy" value="<?php echo esc_attr( __( 'Duplicate', 'wpcf7' ) ); ?>"
 			<?php echo "onclick=\"this.form._wpnonce.value = '$copy_nonce'; this.form.action.value = 'copy'; return true;\""; ?> />
 			|
 

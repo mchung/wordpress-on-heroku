@@ -173,6 +173,7 @@ function wpcf7_l10n() {
 		'pt_BR' => __( 'Brazilian Portuguese', 'wpcf7' ),
 		'bg_BG' => __( 'Bulgarian', 'wpcf7' ),
 		'ca' => __( 'Catalan', 'wpcf7' ),
+		'ckb' => __( 'Central Kurdish', 'wpcf7' ),
 		'zh_CN' => __( 'Chinese (Simplified)', 'wpcf7' ),
 		'zh_TW' => __( 'Chinese (Traditional)', 'wpcf7' ),
 		'hr' => __( 'Croatian', 'wpcf7' ),

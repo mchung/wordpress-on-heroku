@@ -228,7 +228,7 @@ function wpcf7_enqueue_scripts() {
 	wp_deregister_script( 'jquery-form' );
 	wp_register_script( 'jquery-form',
 		wpcf7_plugin_url( 'includes/js/jquery.form.min.js' ),
-		array( 'jquery' ), '3.40.0-2013.08.13', true );
+		array( 'jquery' ), '3.44.0-2013.09.15', true );
 
 	$in_footer = true;
 	if ( 'header' === WPCF7_LOAD_JS )

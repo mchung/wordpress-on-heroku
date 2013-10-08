@@ -159,11 +159,7 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 	wpcf7_init_uploads(); // Confirm upload dir
 
 	$filename = $file['name'];
-
-	// If you get script file, it's a danger. Make it TXT file.
-	if ( preg_match( '/\.(php|pl|py|rb|cgi)\d?$/', $filename ) )
-		$filename .= '.txt';
-
+	$filename = wpcf7_antiscript_file_name( $filename );
 	$filename = wp_unique_filename( $uploads_dir, $filename );
 
 	$new_file = trailingslashit( $uploads_dir ) . $filename;
