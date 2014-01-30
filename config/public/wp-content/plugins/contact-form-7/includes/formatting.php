@@ -153,4 +153,31 @@ function wpcf7_is_date( $date ) {
 	return apply_filters( 'wpcf7_is_date', $result, $date );
 }
 
+function wpcf7_antiscript_file_name( $filename ) {
+	$filename = basename( $filename );
+	$parts = explode( '.', $filename );
+
+	if ( count( $parts ) < 2 )
+		return $filename;
+
+	$script_pattern = '/^(php|phtml|pl|py|rb|cgi|asp|aspx)\d?$/i';
+
+	$filename = array_shift( $parts );
+	$extension = array_pop( $parts );
+
+	foreach ( (array) $parts as $part ) {
+		if ( preg_match( $script_pattern, $part ) )
+			$filename .= '.' . $part . '_';
+		else
+			$filename .= '.' . $part;
+	}
+
+	if ( preg_match( $script_pattern, $extension ) )
+		$filename .= '.' . $extension . '_.txt';
+	else
+		$filename .= '.' . $extension;
+
+	return $filename;
+}
+
 ?>
