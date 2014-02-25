@@ -111,6 +111,17 @@ define("WP_CACHE", getenv("WP_CACHE") == "true");
  */
 define("DISABLE_WP_CRON", getenv("DISABLE_WP_CRON") == "true");
 
+/**
+* Disable the core update
+*/
+define( 'WP_AUTO_UPDATE_CORE', false );
+
+/**
+* Disable plugin update
+*/
+define('WP_HTTP_BLOCK_EXTERNAL', true);
+define('WP_ACCESSIBLE_HOSTS', 'amazonaws.com');
+
 /* That"s all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
