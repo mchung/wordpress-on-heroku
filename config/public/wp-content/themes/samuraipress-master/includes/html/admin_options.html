@@ -1,0 +1,30 @@
+<table class="form-table">
+	<tr>
+		<th><label for"samurai_theme">Samurai Theme</label></th>
+		<td>
+			<select name="samurai_theme">
+				<option value="">None</option>
+				<?php foreach ( $themes as $theme_item ) { ?>
+				<option value="<?php esc_attr_e( $theme_item->ID ); ?>" <?php selected( true, $theme == $theme_item->ID ); ?>>
+					<?php esc_html_e( $theme_item->name ); ?>
+				</option>
+				<?php } ?>
+			</select>
+			<br />
+			<input type="checkbox" name="samurai_smalltext" value="yes" <?php checked( true, $smalltext == 'yes' ); ?> /> Small Text Version (MS Sales Pages).
+		</td>
+	</tr>
+	<tr>
+		<th><label for="samurai_menu">Menu</label></th>
+		<td>
+			<select name="samurai_menu">
+				<option value="">Use OptimizePress Default</option>
+				<?php foreach ( $menus as $menu_item ) { ?>
+				<option value="<?php esc_attr_e( $menu_item->name ); ?>" <?php selected( true, $menu == $menu_item->name ); ?>>
+					<?php esc_html_e( $menu_item->name ); ?>
+				</option>
+				<?php } ?>
+			</select>
+		</td>
+	</tr>
+</table>
