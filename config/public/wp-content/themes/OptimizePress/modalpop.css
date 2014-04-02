@@ -1,0 +1,9 @@
+/* Overlay */
+#simplemodal-overlay {background-color:#333333; cursor:wait;}
+
+/* Container */
+#simplemodal-container {height: auto; width: 430px; background-color:#fff; border:7px solid #2F2F2F; -moz-border-radius: 9px 9px 9px 9px; -moz-box-shadow: 0 0 5px #444444; -webkit-box-shadow: 0 0 5px #444444; box-shadow: 0 0 5px #444444; }
+#simplemodal-container a.modalCloseImg {background:url('x.png') no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-18px; cursor:pointer;}
+#simplemodal-container #basicModalContent {padding:8px;}
+
+#exit_content{padding:0px !important;}

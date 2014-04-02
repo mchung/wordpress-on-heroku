@@ -1,0 +1,34 @@
+/* Easy Tooltip */
+#easyTooltip{
+	margin:0 10px 1em 0;
+	width:auto;
+	padding:8px;
+	background:#000;
+	border:1px solid #e1e1e1;
+	display:none;
+	color:#FFF;
+	z-index:99999;
+	}
+#easyTooltip h3{
+	font:12px Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	color:#FFF;
+	font-weight:bold;
+	margin-bottom:2px;
+	padding:0;
+	letter-spacing:0;
+	}	
+#easyTooltip p{
+	margin:0 0 .5em 0;
+	color:#FFF;
+	font-size:12px;
+	line-height:normal;
+	padding:0;
+	}		
+#easyTooltip img{
+	background:#000;
+	padding:1px;
+	border:1px solid #e1e1e1;
+	float:left;
+	margin-right:10px;
+	}		

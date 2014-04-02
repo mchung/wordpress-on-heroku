@@ -1,0 +1,8 @@
+Here's a sample squeeze page using the squeeze 05 template.
+
+This is where you would place your squeeze page text that would describe your offer to your prospects...
+<ul>
+	<li>You can use these bullets to highlight each of the <strong>benefits </strong>of your free guide/report/offer/video that you are giving away on your squeeze page</li>
+	<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed.</li>
+	<li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,</li>
+</ul>

@@ -1,0 +1,7 @@
+<h2 style="text-align: center;"><span style="color: #003366;"><strong>You must confirm your email address before I
+can send you the [ video/report/audio ] access details</strong></span></h2>
+Please check your email now and look for an email from <strong><span style="color: #339966;">[insert email address/name here]</span></strong>
+
+The subject line will be<strong><span style="color: #339966;"> [insert subject line here]</span></strong>
+
+Go check your inbox now and click the link inside the email to get <strong>instant access</strong> to the free<strong><span style="color: #339966;"> [report/video/audio]</span></strong> now!
