@@ -39,7 +39,9 @@
 				<?php endif; ?>
 				</ul>
 
-				<p id="footer-info"><?php printf( __( 'Designed by %1$s | Powered by %2$s', 'Divi' ), '<a href="http://www.elegantthemes.com" title="Premium WordPress Themes">Elegant Themes</a>', '<a href="http://www.wordpress.org">WordPress</a>' ); ?></p>
+				<p id="footer-info"> Market Samurai is a product of <a href="www.noblesamurai.com">Noble Samurai</a>
+				PO Box 477 Blackburn VIC 3130 Australia | 				
+				| Copyright © Noble Samurai </p>
 			</div>	<!-- .container -->
 		</div>
 	</footer> <!-- #main-footer -->
