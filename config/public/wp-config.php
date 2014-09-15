@@ -39,9 +39,14 @@ define("DB_HOST", trim($url["host"]));
 
 /** Database Charset to use in creating database tables. */
 define("DB_CHARSET", "utf8");
+/** Support WORDPRESS_DIR */
+$siteurl = getenv("WORDPRESS_DIR");
 
 /** Allows both foobar.com and foobar.herokuapp.com to load media assets correctly. */
-define("WP_SITEURL", "http://" . $_SERVER["HTTP_HOST"]);
+if (!empty($siteurl))
+  define("WP_SITEURL", "http://" . $_SERVER["HTTP_HOST"] . "/" . $siteurl);
+else
+  define("WP_SITEURL", "http://" . $_SERVER["HTTP_HOST"]);
 
 /** WP_HOME is your Blog Address (URL). */
 // define('WP_HOME', "http://" . $_SERVER["HTTP_HOST"]);
