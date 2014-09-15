@@ -277,6 +277,8 @@ class WordpressReadOnly extends WordpressReadOnlyGeneric {
 		add_filter('wp_generate_attachment_metadata', array($this, 'generate_attachment_metadata')); // We use this filter to store resized versions of the images.
 		add_filter('load_image_to_edit_path', array($this, 'load_image_to_edit_path')); // This filter downloads the image to our local temporary directory, prior to editing the image.
 		add_filter('wp_save_image_file', array($this, 'save_image_file'), 10, 5); // Store image file.
+	   	add_filter('wp_save_image_editor_file', array($this, 'wpro_save_image_editor_file'), 10, 5); // Filter for Image update on deprecated wp_save_image_file (WP v3.5)    
+		add_filter('wp_update_attachment_metadata', array($this, 'generate_attachment_metadata')); // Added filter to upload the edited image resized version for deprecated wp_save_image_file (WP v3.5) 
 		add_filter('wp_upload_bits', array($this, 'upload_bits')); // On XMLRPC uploads, files arrives as strings, which we are handling in this filter.
 		add_filter('wp_handle_upload_prefilter', array($this, 'handle_upload_prefilter')); // This is where we check for filename dupes (and change them to avoid overwrites).
 		add_filter('shutdown', array($this, 'shutdown'));
@@ -520,6 +522,8 @@ class WordpressReadOnly extends WordpressReadOnlyGeneric {
 		}
 		$data['path'] = $this->upload_basedir . $data['subdir'];
 		$data['url'] = $data['baseurl'] . $data['subdir'];
+		
+		$this->removeTemporaryLocalData($data['path']); 
 
 //		$this->debug('-> RETURNS = ');
 //		$this->debug(print_r($data, true));
@@ -588,6 +592,35 @@ class WordpressReadOnly extends WordpressReadOnlyGeneric {
 		}
 		return $filepath;
 	}
+	
+	function wpro_save_image_editor_file($saved, $filename, $image, $mime_type, $post_id){
+		if (substr($filename, 0, strlen($this->tempdir)) != $this->tempdir) return false;
+		$filename = substr($filename, strlen($this->tempdir));
+		if (!preg_match('/^wpro[0-9]+(\/.+)$/', $filename, $regs)) return false;
+
+		$filename = $regs[1];
+
+		$upload_dir = wp_upload_dir();
+
+		$tmpfile = $upload_dir['basedir'] . $filename;
+
+		if ( null !== $saved )
+			return $saved;
+		
+		$saved = $image->save( $tmpfile, $mime_type );
+		
+		$upload = wp_upload_dir();
+		$url = $upload['baseurl'];
+		if (substr($url, -1) != '/') $url .= '/';
+		while (substr($filename, 0, 1) == '/') $filename = substr($filename, 1);
+		$url .= $filename;
+		
+		$this->backend->upload($saved['path'], $this->url_normalizer($url), $mime_type);
+		
+		return $saved;
+
+	}
+	
 
 	function save_image_file($dummy, $filename, $image, $mime_type, $post_id) {
 
