@@ -46,12 +46,18 @@ server {
     access_log      off;
   }
 
-  # PHP status. /status.html uses /status
-  location ~ ^/(status|ping)$ {
-    include         /app/vendor/nginx/conf/fastcgi_params;
-    fastcgi_pass    unix:/tmp/php-fpm.socket;
-    fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  # # Disable php-fpm /status.html
+  location = /status.html {
+    deny            all;
+    access_log      off;
   }
+
+  # # PHP status. /status.html uses /status
+  # location ~ ^/(status|ping)$ {
+  #   include         /app/vendor/nginx/conf/fastcgi_params;
+  #   fastcgi_pass    unix:/tmp/php-fpm.socket;
+  #   fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  # }
 
   # Nginx status. http://wiki.nginx.org/HttpStubStatusModule
   # location /nginx_status {
